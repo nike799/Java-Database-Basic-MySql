@@ -131,5 +131,180 @@ notes TEXT
   ADD CONSTRAINT fk_movies_director_id FOREIGN KEY(director_id)REFERENCES directors(id),
   ADD CONSTRAINT fk_movies_genre_id FOREIGN KEY(genre_id)REFERENCES genres(id),
   ADD CONSTRAINT fk_movies_category_id FOREIGN KEY(category_id)REFERENCES categories(id);
+  
+  p13_Car Rental_Database
+  ------------------------
+  
+CREATE TABLE categories(
+id INT AUTO_INCREMENT PRIMARY KEY,
+category CHAR NOT NULL,
+daily_rate DOUBLE(4,2) NOT NULL,
+weekly_rate DOUBLE(4,2) NOT NULL,
+monthly_rate DOUBLE(4,2) NOT NULL,
+weekend_rate DOUBLE(4,2) NOT NULL
+);
 
- */
+CREATE TABLE cars(
+id INT AUTO_INCREMENT PRIMARY KEY,
+plate_number VARCHAR(20) NOT NULL,
+make  VARCHAR(20) NOT NULL,
+model  VARCHAR(20) NOT NULL,
+car_year YEAR NOT NULL,
+category_id INT,
+doors INT NOT NULL,
+picture BLOB NOT NULL,
+car_condition VARCHAR(50) NOT NULL,
+available INT NOT NULL
+);
+
+CREATE TABLE employees(
+id INT AUTO_INCREMENT PRIMARY KEY,
+first_name VARCHAR(20) NOT NULL,
+last_name VARCHAR(20) NOT NULL,
+title VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE customers (
+id INT AUTO_INCREMENT PRIMARY KEY,
+driver_licence VARCHAR(50) NOT NULL,
+full_name VARCHAR(50) NOT NULL,
+address VARCHAR(50) NOT NULL,
+city VARCHAR(20) NOT NULL,
+zip_code VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE rental_orders(
+id INT AUTO_INCREMENT PRIMARY KEY,
+employee_id INT,
+car_id INT,
+car_condition VARCHAR(50),
+tank_level VARCHAR(20) NOT NULL,
+kilometrage_start INT NOT NULL,
+kilometrage_end INT NOT NULL,
+start_date DATE NOT NULL,
+end_date  DATE NOT NULL,
+total_days INT NOT NULL,
+rate_applied DOUBLE NOT NULL,
+tax_rate DOUBLE NOT NULL,
+order_status BOOL NOT NULL,
+notes TEXT
+);
+
+INSERT INTO categories(category,daily_rate,weekly_rate,monthly_rate,weekend_rate) VALUES
+('A',40.50,90.50,10.60,70.50),('B',40.50,90.50,10.60,70.50),('C',40.50,90.50,10.60,70.50);
+
+INSERT INTO cars (plate_number,make,model,car_year,doors,`picture`,car_condition,available) VALUES 
+('CA2568HG','Pegaut','5008',2006,5,'image','good',1),
+('CA2568HG','Pegaut','5008',2006,5,'image','good',1),
+('CA2568HG','Pegaut','5008',2006,5,'image','good',1);
+
+INSERT INTO employees(first_name,last_name,title) VALUES('Pesho','Peshev','Manager'),('Pesho','Pesh','Mlad Merinj'),('Pes','Pesh','Merinj');
+
+INSERT INTO customers(driver_licence,full_name,address,city,zip_code)VALUES
+('B','Gosho Goshov', 'Wall Street 55','New York','1231'),
+('C','Gosho Gosh', 'Wall Street 56','New York','1231'),
+('D','Gosh Goshov', 'Wall Street 57','New York','1231');
+
+INSERT INTO rental_orders(tank_level,kilometrage_start,kilometrage_end,start_date,end_date,total_days,rate_applied,tax_rate,order_status)VALUES
+('80',50000,55000,'2018-05-18','2018-08-31',81,20.58,58.58,1),
+('81',50000,55000,'2018-05-18','2018-08-31',81,20.58,58.58,1),
+('82',50000,55000,'2018-05-18','2018-08-31',81,20.58,58.58,1);
+
+p14_Hotel Database
+------------------
+CREATE DATABASE hotel;
+
+CREATE TABLE employees(
+id INT AUTO_INCREMENT PRIMARY KEY,
+first_name VARCHAR(20) NOT NULL, 
+last_name VARCHAR(20) NOT NULL, 
+title VARCHAR(30) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE customers (
+account_number VARCHAR(20) NOT NULL,
+first_name VARCHAR(20) NOT NULL, 
+last_name VARCHAR(20) NOT NULL,
+phone_number VARCHAR(20) NOT NULL, 
+emergency_name VARCHAR(50) NOT NULL,
+emergency_number VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE room_status (
+room_status VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE room_types(
+room_type VARCHAR (20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE bed_types (
+bed_type VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE rooms(
+room_number VARCHAR(10) NOT NULL, 
+room_type VARCHAR(20) NOT NULL,
+bed_type VARCHAR(20) NOT NULL, 
+rate DOUBLE(2,1), 
+room_status VARCHAR(20) NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE payments (
+id INT AUTO_INCREMENT PRIMARY KEY, 
+employee_id INT,
+payment_date DATE NOT NULL, 
+account_number VARCHAR(20), 
+first_date_occupied DATE NOT NULL, 
+last_date_occupied DATE NOT NULL, 
+total_days INT NOT NULL, 
+amount_charged DOUBLE NOT NULL, 
+tax_rate DOUBLE NOT NULL, 
+tax_amount DOUBLE NOT NULL, 
+payment_total DOUBLE NOT NULL,
+notes TEXT
+);
+
+CREATE TABLE occupancies (
+id INT AUTO_INCREMENT PRIMARY KEY,
+employee_id INT,
+date_occupied DATE,
+account_number VARCHAR(20),
+room_number VARCHAR(10),
+rate_applied DOUBLE , 
+phone_charge DOUBLE NOT NULL, 
+notes TEXT
+);
+
+INSERT INTO employees(first_name,last_name,title) VALUES
+('Pesho','Peshev','driver'),('Pesho','Peshev','driver'),('Pesho','Peshev','driver');
+
+INSERT INTO customers(account_number,first_name,last_name,phone_number,emergency_name,emergency_number) VALUES
+('123456789','Pesho','Peshev','55665255555','Father','555555555'),
+('123456789','Pesho','Peshev','55665255555','Father','555555555'),
+('123456789','Pesho','Peshev','55665255555','Father','555555555');
+
+INSERT INTO room_status(`room_status`) VALUES ('free'),('free'),('free');
+INSERT INTO room_types (room_type) VALUES ('double'),('single'),('double');
+INSERT INTO bed_types(bed_type)VALUES ('double'), ('double'), ('tripple');
+
+INSERT INTO rooms (room_number,room_type,bed_type,`room_status`) VALUES
+('123','double','huge','free'),
+('123','double','huge','free'),
+('123','double','huge','free');
+
+INSERT INTO payments (first_date_occupied,last_date_occupied,total_days, amount_charged,tax_rate,tax_amount,payment_total)VALUES
+('2018-05-15','2018-06-15',100,2000.00,10.58,58.25,2589.25),
+('2018-05-15','2018-06-15',100,2000.00,10.58,58.25,2589.25),
+('2018-05-15','2018-06-15',100,2000.00,10.58,58.25,2589.25);
+
+INSERT INTO occupancies (phone_charge) VALUES (25.25),(25.25),(25.25);
+*/
