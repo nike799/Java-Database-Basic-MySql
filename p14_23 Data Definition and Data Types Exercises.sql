@@ -1,5 +1,4 @@
 
-/*
 p15_Create Database softuni
 ----------------------------
 
@@ -63,7 +62,7 @@ SELECT * FROM employees;
 
 p19_Basic Select All Fields and Order Them
 -------------------------------------------
-
+ 
 SELECT *
  FROM towns 
  ORDER BY name;
@@ -108,9 +107,8 @@ SET salary = salary*1.1;
  SELECT tax_rate
  FROM payments
  
-*/
-USE hotel;
-TRUNCATE occupancies;
+ USE hotel;
+ TRUNCATE occupancies;
 
 
 

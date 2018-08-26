@@ -1,6 +1,5 @@
 USE gamebar;
 
-/*
 p02_Create Tables
 
 CREATE TABLE `employees` (
@@ -42,7 +41,6 @@ p06_Modifying columns
 ALTER TABLE employees
 MODIFY COLUMN middle_name VARCHAR(100);
 
-*/
 
 
 

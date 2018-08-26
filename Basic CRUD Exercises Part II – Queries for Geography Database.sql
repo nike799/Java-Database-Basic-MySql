@@ -1,5 +1,5 @@
 USE geography;
-/*
+
  p22_All Mountain Peaks 
  ----------------------
  SELECT peak_name
@@ -21,7 +21,7 @@ USE geography;
    FROM countries
 	  ORDER BY country_name;
 
-*/
+
 
  
 

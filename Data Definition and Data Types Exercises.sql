@@ -1,5 +1,4 @@
 
-/*
 USE minions;
 
 p02_Create Tables
@@ -307,4 +306,4 @@ INSERT INTO payments (first_date_occupied,last_date_occupied,total_days, amount_
 ('2018-05-15','2018-06-15',100,2000.00,10.58,58.25,2589.25);
 
 INSERT INTO occupancies (phone_charge) VALUES (25.25),(25.25),(25.25);
-*/
+
