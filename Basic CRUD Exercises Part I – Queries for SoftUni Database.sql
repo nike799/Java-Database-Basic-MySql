@@ -1,5 +1,5 @@
 USE soft_uni;
-/*
+
  p02_Find All Information About Departments
  ---------------------------------------------
  SELECT * FROM departments;
@@ -120,7 +120,6 @@ USE soft_uni;
  SELECT salary
  FROM employees;
  
-*/
 
 
  
