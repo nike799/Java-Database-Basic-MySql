@@ -1,4 +1,4 @@
-USE soft_uni;
+ Part I – Queries for SoftUni Database
 
  p02_Find All Information About Departments
  ---------------------------------------------
@@ -120,6 +120,34 @@ USE soft_uni;
  SELECT salary
  FROM employees;
  
+ Part II – Queries for Geography Database
+ 
+  p22_All Mountain Peaks 
+ ----------------------
+ SELECT peak_name
+ FROM peaks
+ ORDER BY peak_name;
+
+ p23_Biggest Countries by Population 
+ -----------------------------------
+ SELECT country_name,population
+  FROM countries
+   WHERE continent_code IN ('EU')
+    ORDER BY population DESC,country_name
+     LIMIT 30;
+ 
+ p24_Countries and Currency (Euro / Not Euro 
+ -------------------------------------------
+ SELECT country_name ,country_code,
+  IF (currency_code = 'EUR','Euro','Not Euro') AS currency
+   FROM countries
+	  ORDER BY country_name;
+	  
+ Part III – Queries for Diablo Database
+ 
+ SELECT name
+  FROM characters
+   ORDER BY name;
 
 
  
