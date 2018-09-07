@@ -115,18 +115,18 @@
  p20_Increase Salaries
  -------------------
  UPDATE employees 
- SET salary = salary*1.12
- WHERE department_id IN (1,2,4,11);
- SELECT salary
- FROM employees;
+  SET salary = salary*1.12
+   WHERE department_id IN (1,2,4,11);
+    SELECT salary
+     FROM employees;
  
  Part II – Queries for Geography Database
  
   p22_All Mountain Peaks 
  ----------------------
  SELECT peak_name
- FROM peaks
- ORDER BY peak_name;
+  FROM peaks
+   ORDER BY peak_name;
 
  p23_Biggest Countries by Population 
  -----------------------------------
