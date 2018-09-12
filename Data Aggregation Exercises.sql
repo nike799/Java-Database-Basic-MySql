@@ -139,6 +139,19 @@
     WHERE salary NOT BETWEEN 30000 AND 70000
      GROUP BY e.department_id
 	   ORDER BY e.department_id;
+	   
+  p17. 3rd Highest Salary
+  ------------------------
+  SELECT e.department_id,MAX(e.salary) AS third_highest_salary FROM employees AS e
+  JOIN
+   (SELECT e1.department_id, MAX(e1.salary) AS second_highest_salary FROM employees AS e1
+    JOIN
+    (SELECT e2.department_id, MAX(e2.salary) AS first_highest_salary FROM employees AS e2
+     GROUP BY e2.department_id) AS max_salaries
+     ON e1.department_id = max_salaries.department_id AND e1.salary < max_salaries.first_highest_salary
+   GROUP BY department_id) AS second_highest_salary
+   ON e.department_id = second_highest_salary.department_id AND e.salary < second_highest_salary.second_highest_salary
+   GROUP BY e.department_id;
 	 
   p18. Salary Challenge
   ------------------------	  
