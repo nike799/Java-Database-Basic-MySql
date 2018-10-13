@@ -1,4 +1,4 @@
-/*
+
                 01. Employees with Salary Above 35000
                 -------------------------------------
 CREATE PROCEDURE usp_get_employees_salary_above_35000 ()
@@ -269,7 +269,6 @@ CREATE TRIGGER tr_on_insert_into_logs_table
                   ' ', 'at', ' ',CURRENT_TIME(), ' ', IF(CURRENT_TIME() BETWEEN 0 AND 12, 'AM', 'PM'), ' ',
                   'your balance was changed from', ' ', new.old_sum, ' ', 'to', ' ', new.new_sum, '.');
   END;
-*/
 
 
 
